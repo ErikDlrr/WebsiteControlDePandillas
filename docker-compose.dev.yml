@@ -1,0 +1,39 @@
+services:
+  db:
+    image: mariadb:11
+    container_name: criminal_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: criminal_nexus
+      MYSQL_USER: criminal_user
+      MYSQL_PASSWORD: criminal_pass
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db/init:/docker-entrypoint-initdb.d
+    networks:
+      - criminal_net
+
+  web:
+    build: .
+    container_name: criminal_web
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: criminal_user
+      DB_PASS: criminal_pass
+      DB_NAME: criminal_nexus
+    ports:
+      - "8080:80"
+    networks:
+      - criminal_net
+
+volumes:
+  db-data:
+
+networks:
+  criminal_net:
+    driver: bridge
+
