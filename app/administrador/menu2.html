@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menú Principal - Criminal Nexus</title>
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Estilos globales del sistema -->
+    <link rel="stylesheet" href="../login.css">
+
+    <style>
+        .admin-card {
+            margin-top: 12px;
+            border-radius: 22px;
+            background: rgba(15, 23, 42, 0.97);
+            border: 1px solid rgba(55, 65, 81, 0.95);
+            padding: 20px 18px 22px;
+            box-shadow:
+                0 22px 70px rgba(15, 23, 42, 0.96),
+                0 0 0 1px rgba(15, 23, 42, 0.95);
+        }
+
+        .admin-header {
+            margin-bottom: 16px;
+        }
+
+        .admin-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #f9fafb;
+        }
+
+        .admin-header-title i {
+            font-size: 1.3rem;
+        }
+
+        .admin-header p {
+            margin-top: 6px;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .admin-menu-grid {
+            margin-top: 14px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 12px;
+        }
+
+        .admin-menu-link {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            padding: 14px 14px;
+            border-radius: 18px;
+            text-decoration: none;
+            background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.15), rgba(15, 23, 42, 0.98));
+            border: 1px solid rgba(55, 65, 81, 0.9);
+            color: #e5e7eb;
+            font-size: 0.9rem;
+            transition:
+                transform 0.12s ease,
+                box-shadow 0.18s ease,
+                border-color 0.18s ease,
+                background 0.18s ease;
+        }
+
+        .admin-menu-link i {
+            font-size: 1.1rem;
+        }
+
+        .admin-menu-link span {
+            font-weight: 500;
+        }
+
+        .admin-menu-link:hover {
+            transform: translateY(-1px);
+            box-shadow:
+                0 18px 40px rgba(15, 23, 42, 0.95),
+                0 0 0 1px rgba(37, 99, 235, 0.7);
+            border-color: rgba(37, 99, 235, 0.8);
+        }
+
+        .admin-menu-link.back {
+            background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.18), rgba(15, 23, 42, 0.98));
+            border-color: rgba(127, 29, 29, 0.9);
+        }
+
+        .admin-menu-link.back:hover {
+            box-shadow:
+                0 18px 40px rgba(127, 29, 29, 0.6),
+                0 0 0 1px rgba(127, 29, 29, 0.9);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-shell">
+        <header class="app-header">
+            <div class="app-header-left">
+                <h1 class="app-title">Panel de administración</h1>
+                <p class="app-subtitle">
+                    Gestiona los módulos internos de Criminal Nexus.
+                </p>
+            </div>
+            <div class="app-header-right">
+                <span class="badge">
+                    <i class="fa-solid fa-shield-halved"></i>&nbsp;Administrador
+                </span>
+                <a href="../home.php" class="btn-ghost">
+                    Volver al inicio
+                </a>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <section class="admin-card">
+                <div class="admin-header">
+                    <div class="admin-header-title">
+                        <i class="fa-solid fa-sitemap"></i>
+                        <span>Menú de módulos</span>
+                    </div>
+                    <p>Selecciona el módulo que deseas gestionar.</p>
+                </div>
+
+                <div class="admin-menu-grid">
+                    <a href="SubmenuPandillas.html" class="admin-menu-link">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Gestionar pandillas</span>
+                        <small>Registro, consulta, actualización y baja de pandillas.</small>
+                    </a>
+
+                    <a href="SubmenuIntegrantes.html" class="admin-menu-link">
+                        <i class="fa-solid fa-user-group"></i>
+                        <span>Gestionar integrantes</span>
+                        <small>Control de integrantes asociados a pandillas.</small>
+                    </a>
+
+
+                    <a href="SubmenuUsuarios.html" class="admin-menu-link">
+                        <i class="fa-solid fa-users-gear"></i>
+                        <span>Gestionar usuarios del sistema</span>
+                        <small>Altas, consultas, edición y baja de cuentas.</small>
+                    </a>
+
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2025 Criminal Nexus. |
+                <a target="_blank" href="http://upslp.edu.mx/">Universidad Politécnica de San Luis Potosí</a>
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>

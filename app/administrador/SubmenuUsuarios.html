@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestión de Usuarios - Criminal Nexus</title>
+
+    <link rel="stylesheet" href="../login.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        .admin-card {
+            margin-top: 12px;
+            border-radius: 22px;
+            background: rgba(15, 23, 42, 0.97);
+            border: 1px solid rgba(55, 65, 81, 0.95);
+            padding: 20px 18px 22px;
+            box-shadow:
+                0 22px 70px rgba(15, 23, 42, 0.96),
+                0 0 0 1px rgba(15, 23, 42, 0.95);
+        }
+
+        .admin-menu-grid {
+            margin-top: 14px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .admin-menu-link {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 14px;
+            border-radius: 18px;
+            text-decoration: none;
+            background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.15), rgba(15, 23, 42, 0.98));
+            border: 1px solid rgba(55, 65, 81, 0.9);
+            color: #e5e7eb;
+            font-size: 0.9rem;
+            transition:
+                transform 0.12s ease,
+                box-shadow 0.18s ease,
+                border-color 0.18s ease;
+        }
+        .admin-menu-link i { font-size: 1.1rem; }
+        .admin-menu-link span { font-weight: 500; }
+
+        .admin-menu-link:hover {
+            transform: translateY(-1px);
+            box-shadow:
+                0 18px 40px rgba(15, 23, 42, 0.95),
+                0 0 0 1px rgba(37, 99, 235, 0.7);
+            border-color: rgba(37, 99, 235, 0.8);
+        }
+
+        .back {
+            background: rgba(15, 23, 42, 0.98);
+            border-color: rgba(55, 65, 81, 0.9);
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-shell">
+
+    <header class="app-header">
+        <div class="app-header-left">
+            <h1 class="app-title">Panel de administración</h1>
+            <p class="app-subtitle">Operaciones sobre usuarios del sistema.</p>
+        </div>
+
+        <div class="app-header-right">
+            <span class="badge">
+                <i class="fa-solid fa-user-gear"></i> Usuarios
+            </span>
+            <a href="menu2.html" class="btn-ghost">
+                <i class="fa-solid fa-arrow-left"></i>
+                Volver
+            </a>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <section class="admin-card">
+            <h2 class="module-title">
+                <i class="fa-solid fa-users-gear"></i> Gestión de usuarios
+            </h2>
+
+            <div class="admin-menu-grid">
+
+                <a href="../ingreso/addUser.html" class="admin-menu-link">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>Registrar usuario</span>
+                    <small>Crear cuentas con distintos roles.</small>
+                </a>
+
+                <a href="consultaUsuarios.php" class="admin-menu-link">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Consultar usuarios</span>
+                    <small>Ver usuarios existentes y sus roles.</small>
+                </a>
+
+                <a href="ActualizarUsuarios.php" class="admin-menu-link">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>Editar usuario</span>
+                    <small>Actualizar datos, email, rol o contraseña.</small>
+                </a>
+
+                <a href="EliminarUsuarios.php" class="admin-menu-link">
+                    <i class="fa-solid fa-user-xmark"></i>
+                    <span>Eliminar usuario</span>
+                    <small>Dar de baja cuentas que ya no se usan.</small>
+                </a>
+
+                <a href="menu2.html" class="admin-menu-link back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Volver al menú principal</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Criminal Nexus. |
+            <a target="_blank" href="http://upslp.edu.mx/">Universidad Politécnica de San Luis Potosí</a>
+        </p>
+    </footer>
+
+</div>
+
+</body>
+</html>
