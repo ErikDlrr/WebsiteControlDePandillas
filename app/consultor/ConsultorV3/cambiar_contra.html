@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar contraseña - Consultor</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../../login.css">
+</head>
+<body>
+    <div class="auth-page">
+        <header class="auth-header">
+            <div class="brand">
+                <div class="brand-mark brand-img">
+                    <img src="../../polis.jpg" alt="Logo">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">Criminal Nexus</span>
+                    <span class="brand-subtitle">Módulo de consultor</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="auth-main">
+            <section class="auth-card">
+                <p class="auth-title">
+                    <i class="fa-solid fa-key"></i> Cambiar contraseña
+                </p>
+                <p class="auth-description">
+                    Actualiza tu contraseña de acceso. Asegúrate de usar una clave segura.
+                </p>
+
+                <form class="login" action="cambiar_contrasena.php" method="post" onsubmit="return validarCambio();">
+                    <div class="field">
+                        <label for="contraseñaActual">Contraseña actual</label>
+                        <div class="field-inner">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="contraseñaActual" name="contraseñaActual" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="nuevaContraseña">Nueva contraseña</label>
+                        <div class="field-inner">
+                            <i class="fa-solid fa-lock-open"></i>
+                            <input type="password" id="nuevaContraseña" name="nuevaContraseña" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="confirmarContraseña">Confirmar nueva contraseña</label>
+                        <div class="field-inner">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="confirmarContraseña" name="confirmarContraseña" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <span class="state">Actualizar contraseña</span>
+                    </button>
+
+                    <div class="auth-secondary" style="margin-top: 10px;">
+                        <a href="consultor.php" class="link-pill">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span class="link-pill-label">Volver al panel de consultor</span>
+                        </a>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2025 Criminal Nexus. |
+                <a target="_blank" href="http://upslp.edu.mx/">Universidad Politécnica de San Luis Potosí</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function validarCambio() {
+            const nueva = document.getElementById('nuevaContraseña').value;
+            const confirmar = document.getElementById('confirmarContraseña').value;
+
+            if (nueva !== confirmar) {
+                alert('Las contraseñas nuevas no coinciden.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

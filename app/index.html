@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminal Nexus - Iniciar sesión</title>
+
+    <!-- Fuente moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="fontawesome-free-6.6.0-web/css/all.min.css">
+
+    <!-- Estilos compartidos (login + home) -->
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="auth-page">
+        <header class="auth-header">
+            <div class="brand">
+                <div class="brand-mark brand-img">
+                    <img src="polis.jpg" alt="Logo">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">Criminal Nexus</span>
+                    <span class="brand-subtitle">Panel de inteligencia</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="auth-main">
+            <section class="auth-card">
+                <p class="auth-title">Iniciar sesión</p>
+                <p class="auth-description">
+                    Accede al panel de Criminal Nexus con tus credenciales asignadas.
+                </p>
+
+                <form class="login" action="php/log.php" method="POST">
+                    <div class="field">
+                        <label for="usuario">Usuario</label>
+                        <div class="field-inner">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="contrasena">Contraseña</label>
+                        <div class="field-inner">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" id="contrasena" name="contrasena" placeholder="Ingresa tu contraseña" required>
+                        </div>
+                    </div>
+
+                    <div class="auth-secondary">
+                        <a href="ciudadano/mCuidadano.html" class="link-pill">
+                            <span class="link-pill-label">Acceso ciudadano</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <i class="spinner"></i>
+                        <span class="state">Autenticar</span>
+                    </button>
+                </form>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2025 Criminal Nexus. |
+                <a target="_blank" href="http://upslp.edu.mx/">Universidad Politécnica de San Luis Potosí</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Tu login.js sigue funcionando, respeta .login, .spinner, .state -->
+    <script src="jquery-3.7.1/dist/jquery.min.js"></script>
+    <script src="login.js"></script>
+</body>
+
+</html>

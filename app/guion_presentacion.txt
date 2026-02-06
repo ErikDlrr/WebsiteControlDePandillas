@@ -1,0 +1,82 @@
+GUION DE PRESENTACIÓN EXTENDIDO - CRIMINAL NEXUS
+==================================================
+
+OBJETIVO: Video Tutorial sobre el desarrollo del software (10 minutos).
+MATERIA: Ingeniería de Software.
+
+ESTRUCTURA DEL TIEMPO:
+1. Introducción y Procesos de Ingeniería (3 min)
+2. Presentación del Sistema Funcionando (5 min)
+3. Cierre y Pruebas del Software (2 min)
+
+--------------------------------------------------------------------------------
+PARTE 1: INTRODUCCIÓN Y PROCESOS DE INGENIERÍA (0:00 - 3:00)
+--------------------------------------------------------------------------------
+
+[0:00 - 0:45] BIENVENIDA Y PLANEACIÓN
+- "Buenos días. En este video presentaremos el desarrollo integral de 'Criminal Nexus', una plataforma web para la gestión y análisis de información delictiva."
+- "Comenzamos con la fase de **Planeación**. Utilizamos una metodología ágil (como Scrum/Kanban) para dividir el trabajo en módulos entregables. Definimos el alcance del proyecto: crear un sistema centralizado que sustituya los registros manuales dispersos, permitiendo a las autoridades tomar decisiones basadas en datos geoespaciales."
+- "Nuestro cronograma se dividió en sprints de diseño, desarrollo de backend, integración de frontend y pruebas."
+
+[0:45 - 1:30] ANÁLISIS DE REQUERIMIENTOS
+- "En la fase de **Requerimientos**, identificamos dos actores principales:"
+    1.  "**Administrador:** Requiere control total (CRUD) sobre pandillas, integrantes y usuarios, además de generar reportes oficiales."
+    2.  "**Consultor:** Necesita herramientas de visualización rápida (mapas) y capacidad de reportar incidentes en campo."
+- "Como requerimientos no funcionales, priorizamos la seguridad (sesiones, encriptación), la usabilidad (diseño intuitivo) y el rendimiento (carga rápida de mapas)."
+- "**Ventaja Competitiva:** A diferencia de hojas de cálculo o sistemas estáticos, Criminal Nexus ofrece geolocalización en tiempo real y análisis visual inmediato, lo que reduce el tiempo de respuesta policial."
+
+[1:30 - 2:15] DISEÑO DEL SISTEMA
+- "Para el **Diseño**, estructuramos una arquitectura Modelo-Vista-Controlador (MVC) adaptada."
+- "**Base de Datos:** Diseñamos un esquema relacional en MySQL. Las tablas principales son `pandillas`, `integrantes`, `ubicacion` y `antecedentes`, todas interconectadas para mantener la integridad referencial."
+- "**Interfaz (UI/UX):** Diseñamos wireframes enfocados en la claridad. Usamos una paleta de colores oscuros ('Dark Mode') para reducir la fatiga visual en centros de monitoreo nocturno, con acentos de color para indicar peligrosidad."
+
+[2:15 - 3:00] CODIFICACIÓN Y HERRAMIENTAS
+- "Finalmente, la fase de **Codificación**."
+- "**Frontend:** HTML5 semántico, CSS3 nativo para estilos personalizados (sin depender de frameworks pesados) y JavaScript para la lógica del cliente y la API de Google Maps."
+- "**Backend:** PHP para la lógica de negocio y conexión segura a la base de datos."
+- "Utilizamos control de versiones (Git) para gestionar los cambios y asegurar que el código sea mantenible y escalable."
+
+--------------------------------------------------------------------------------
+PARTE 2: PRESENTACIÓN DEL SISTEMA FUNCIONANDO (3:00 - 8:00)
+--------------------------------------------------------------------------------
+
+[3:00 - 4:00] MÓDULO ADMINISTRADOR: GESTIÓN Y SEGURIDAD
+- (Acción: Mostrar Login) "Iniciamos la demostración. El sistema cuenta con un login seguro que diferencia roles."
+- (Acción: Ingresar como Admin) "Al entrar como Administrador, vemos el Dashboard principal."
+- (Acción: Ir a 'Gestionar Pandillas') "Vamos al módulo de Pandillas. Aquí podemos registrar una nueva organización. Observen cómo el formulario solicita datos clave: nombre, líder, y muy importante, la ubicación."
+- (Acción: Registrar una pandilla de prueba) "Al guardar, la información se inserta en tiempo real en la base de datos y geocodifica la posición para el mapa."
+
+[4:00 - 5:00] MÓDULO ADMINISTRADOR: MAPAS Y REPORTES
+- (Acción: Ir al Mapa de Admin) "El mapa es el corazón del sistema. Aquí visualizamos la distribución delictiva. Los marcadores no son estáticos; al hacer clic, despliegan la ficha técnica de la pandilla: peligrosidad, número de integrantes y zona de operación."
+- (Acción: Ir a Reportes) "Para la burocracia y el análisis forense, el sistema genera reportes en PDF. Seleccionamos la zona 'Norte', y el sistema compila un documento oficial listo para imprimir, ahorrando horas de trabajo manual."
+
+[5:00 - 6:00] MÓDULO ADMINISTRADOR: USUARIOS E INTEGRANTES
+- (Acción: Ir a Gestionar Usuarios) "El admin también controla quién accede al sistema. Puede crear cuentas para nuevos consultores o dar de baja a personal que ya no labora."
+- (Acción: Ir a Gestionar Integrantes) "Además, podemos profundizar y gestionar a los integrantes individuales de cada pandilla, vinculándolos a su grupo criminal correspondiente."
+
+[6:00 - 7:00] MÓDULO CONSULTOR: VISUALIZACIÓN Y ANÁLISIS
+- (Acción: Cerrar sesión Admin, entrar como Consultor) "Cambiamos de rol. El Consultor tiene una vista optimizada para el análisis."
+- (Acción: Mostrar Mapa Consultor) "Su pantalla principal es el mapa. Puede filtrar por zonas para enfocar su análisis en áreas específicas."
+- (Acción: Ir a Estadísticas) "Hemos añadido un apartado gráfico donde se visualiza la cantidad de pandillas por zona y su distribución de peligrosidad, permitiendo identificar 'focos rojos' rápidamente."
+
+[7:00 - 8:00] MÓDULO CONSULTOR: OPERATIVIDAD (NUEVO MÓDULO)
+- (Acción: Ir a 'Módulo Pandillas') "Aquí mostramos una de las funcionalidades más recientes: el Módulo Unificado de Pandillas. Permite al consultor ver el listado detallado y realizar actualizaciones rápidas de inteligencia, como cambios en el liderazgo o número de miembros."
+- (Acción: Ir a 'Captura de Incidentes') "Finalmente, el registro de incidentes. Si ocurre un evento, el consultor lo registra asociado a una pandilla, fecha y hora, creando un historial delictivo trazeable."
+
+--------------------------------------------------------------------------------
+PARTE 3: CIERRE Y PRUEBAS DEL SOFTWARE (8:00 - 10:00)
+--------------------------------------------------------------------------------
+
+[8:00 - 9:00] PRUEBAS DE VALIDACIÓN (BLACK BOX)
+- "Pasamos a la fase de **Pruebas**. Realizamos pruebas de caja negra para validar la funcionalidad."
+- "**Prueba de Integridad:** Intentemos registrar un usuario con un correo inválido o dejar campos vacíos en el registro de pandillas." (Acción: Intentar enviar formulario vacío). "El sistema impide la acción, validando que los datos sean coherentes antes de tocar la base de datos."
+- "**Prueba de Navegación:** Verificamos que no existan enlaces rotos. Todos los botones de 'Volver' y menús redirigen correctamente, asegurando que el usuario nunca se quede atrapado en una pantalla."
+
+[9:00 - 9:30] PRUEBAS DE SISTEMA Y COMPATIBILIDAD
+- "Verificamos la correcta carga de recursos externos. Por ejemplo, los iconos (FontAwesome) y la API de Google Maps se cargan desde CDNs confiables, asegurando que la interfaz se vea bien en diferentes navegadores y dispositivos."
+- "También probamos la generación de PDFs con caracteres especiales y grandes volúmenes de datos, confirmando que el motor de reportes es robusto."
+
+[9:30 - 10:00] CONCLUSIÓN Y FUTURO
+- "En conclusión, Criminal Nexus es un producto de software completo que ha pasado por todas las etapas de la ingeniería de software."
+- "Cumple con su objetivo de modernizar la inteligencia delictiva, ofreciendo ventajas competitivas claras: centralización, visualización geoespacial y facilidad de uso."
+- "Como trabajo futuro, planeamos implementar análisis predictivo con IA. Gracias por su atención."

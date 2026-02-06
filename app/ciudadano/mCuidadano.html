@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Pandillas - Ciudadano</title>
+
+    <!-- Fuente moderna y minimal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Nuevo estilo minimalista -->
+    <link rel="stylesheet" href="global-style.css">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4lJG7qjyagaSLaD1KSVt5QYZJDJhyKLY&callback=initMap"
+        async defer></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="logo">
+            <img src="../polis.jpg" alt="Logo Proyecto Pandillas">
+            <span class="logo-text">Proyecto Pandillas</span>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="mCuidadano.html" class="nav-link active">Mapa de Zonas</a></li>
+                <li><a href="mGuiaSeg.html" class="nav-link">Guía de Seguridad</a></li>
+                <li><a href="mPFrecu.html" class="nav-link">Preguntas Frecuentes</a></li>
+                <li><a href="../index.html" class="nav-link nav-cta">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-wrapper">
+        <!-- Sección del Mapa -->
+        <section class="card map-section">
+            <header class="card-header">
+                <div>
+                    <h1>Mapa de Zonas de Riesgo</h1>
+                    <p class="card-subtitle">
+                        Consulta la peligrosidad aproximada por zona y toma decisiones más informadas sobre tus
+                        trayectos.
+                    </p>
+                </div>
+                <span class="pill pill-soft">Ciudadano</span>
+            </header>
+
+            <div class="filter">
+                <label for="zona">Zona de la ciudad</label>
+                <select id="zona" onchange="filterByZone()">
+                    <option value="todas">Todas las Zonas</option>
+                    <option value="Centro">Centro</option>
+                    <option value="Este">Este</option>
+                    <option value="Oeste">Oeste</option>
+                    <option value="Norte">Norte</option>
+                    <option value="Sur">Sur</option>
+                </select>
+                <p class="helper-text">
+                    Los datos son aproximados y pueden variar. Úsalos como apoyo, nunca como sustituto del criterio
+                    personal.
+                </p>
+            </div>
+
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+
+            <div class="legend">
+                <h2>Leyenda</h2>
+                <ul>
+                    <li><span class="dot dot-high"></span> Alta peligrosidad</li>
+                    <li><span class="dot dot-medium"></span> Peligrosidad media</li>
+                    <li><span class="dot dot-low"></span> Baja peligrosidad</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Recomendaciones de seguridad -->
+        <section class="card security-section">
+            <header class="card-header">
+                <div>
+                    <h2>Recomendaciones de seguridad</h2>
+                    <p class="card-subtitle">
+                        Algunas prácticas básicas para reducir riesgos al desplazarte por la ciudad.
+                    </p>
+                </div>
+            </header>
+
+            <ul class="tips-list">
+                <li>
+                    Mantente en avenidas principales, bien iluminadas y con afluencia de personas. Evita atajos por
+                    zonas solitarias.
+                </li>
+                <li>
+                    Si percibes una situación de tensión o conflicto, aléjate con calma y busca un lugar seguro. No te
+                    enfrentes a grupos.
+                </li>
+                <li>
+                    Comparte tu ubicación en tiempo real con alguien de confianza cuando te encuentres en zonas de
+                    riesgo.
+                </li>
+                <li>
+                    Ten a la mano los números de emergencia locales y comunícalos a tus familiares o amigos cercanos.
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2025 Criminal Nexus. |
+            <a target="_blank" href="http://upslp.edu.mx/">Universidad Politécnica de San Luis Potosí</a>
+        </p>
+    </footer>
+
+    <!-- Script original del mapa -->
+    <script>
+        let map;
+        let markers = [];
+
+        const zonas = {
+            Centro: { lat: 22.1565, lng: -100.9850 },
+            Este: { lat: 22.1800, lng: -100.9000 },
+            Oeste: { lat: 22.1400, lng: -101.0500 },
+            Norte: { lat: 22.2100, lng: -100.9500 },
+            Sur: { lat: 22.1300, lng: -100.9600 }
+        };
+
+        function initMap() {
+            const slpCenter = { lat: 22.1565, lng: -100.9850 };
+
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: slpCenter,
+                zoom: 12
+            });
+
+            loadPandillasData('todas');
+        }
+
+        function loadPandillasData(zone) {
+            markers.forEach(marker => marker.setMap(null));
+            markers = [];
+
+            fetch('getPandillas.php?zona=' + zone)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(pandillas => {
+                    if (!Array.isArray(pandillas)) {
+                        console.error("La respuesta no es un array:", pandillas);
+                        return;
+                    }
+                    pandillas.forEach(pandilla => {
+                        const lat = parseFloat(pandilla.latitud);
+                        const lng = parseFloat(pandilla.longitud);
+
+                        if (isNaN(lat) || isNaN(lng)) {
+                            console.error('Latitud/Longitud inválidas:', pandilla);
+                            return;
+                        }
+
+                        const marker = new google.maps.Marker({
+                            position: { lat, lng },
+                            map: map,
+                            title: pandilla.nombre_pandilla || ''
+                        });
+
+                        const contenido = `
+                            <h3>${pandilla.nombre_pandilla || ''}</h3>
+                            <p><strong>Descripción:</strong> ${pandilla.descripcion_pandilla || ''}</p>
+                            <p><strong>Líder:</strong> ${pandilla.lider || ''}</p>
+                            <p><strong>Integrantes aprox.:</strong> ${pandilla.numero_aproximado_de_integrantes || ''}</p>
+                            <p><strong>Peligrosidad:</strong> ${pandilla.peligrosidad || ''}</p>
+                            <p><strong>Zona:</strong> ${pandilla.zona || ''}</p>
+                            <p><strong>Colonia:</strong> ${pandilla.colonia || ''}</p>
+                        `;
+
+                        const infoWindow = new google.maps.InfoWindow({
+                            content: contenido
+                        });
+
+                        marker.addListener('click', function () {
+                            infoWindow.open(map, marker);
+                        });
+
+                        markers.push(marker);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al cargar datos de pandillas:', error);
+                });
+        }
+
+        function filterByZone() {
+            const selectedZone = document.getElementById("zona").value;
+
+            if (selectedZone !== "todas") {
+                map.setCenter(zonas[selectedZone]);
+                map.setZoom(13);
+            } else {
+                map.setCenter(zonas['Centro']);
+                map.setZoom(12);
+            }
+
+            loadPandillasData(selectedZone);
+        }
+    </script>
+</body>
+
+</html>

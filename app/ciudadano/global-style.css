@@ -1,0 +1,432 @@
+/* Reset básico */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base */
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
+    color: #e5e7eb;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Layout general */
+.page-wrapper {
+    max-width: 1120px;
+    margin: 32px auto 40px;
+    padding: 0 16px;
+}
+
+/* Header */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(18px);
+    background: rgba(15, 23, 42, 0.92);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.site-header .logo img {
+    height: 32px;
+    width: 32px;
+    border-radius: 999px;
+    object-fit: cover;
+}
+
+.site-header .logo-text {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    font-size: 1rem;
+    color: #f9fafb;
+}
+
+/* Navegación */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #e5e7eb;
+    border: 1px solid transparent;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+}
+
+.nav-link:hover {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: rgba(148, 163, 184, 0.6);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.6);
+    transform: translateY(-1px);
+}
+
+.nav-link.active {
+    background: linear-gradient(135deg, #22c55e, #22c55e);
+    color: #020617;
+    border-color: rgba(34, 197, 94, 0.9);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.45);
+}
+
+.nav-cta {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: rgba(148, 163, 184, 0.5);
+}
+
+.nav-cta:hover {
+    background: #22c55e;
+    color: #020617;
+    border-color: #22c55e;
+}
+
+/* Tarjetas genéricas */
+.card {
+    background: rgba(15, 23, 42, 0.96);
+    border-radius: 24px;
+    padding: 24px 24px 28px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    box-shadow:
+        0 18px 60px rgba(15, 23, 42, 0.85),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(22px);
+    margin-bottom: 24px;
+}
+
+/* Header de tarjeta */
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.card-header h1,
+.card-header h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: #f9fafb;
+}
+
+.card-subtitle {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    max-width: 560px;
+}
+
+/* Pills / chips */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.pill-soft {
+    background: rgba(31, 41, 55, 0.9);
+    color: #e5e7eb;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+/* Filtro */
+.filter {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #d1d5db;
+}
+
+.filter select {
+    width: 100%;
+    max-width: 260px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    background: rgba(15, 23, 42, 0.95);
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    outline: none;
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #9ca3af 50%),
+                      linear-gradient(135deg, #9ca3af 50%, transparent 50%);
+    background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+.filter select:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.65);
+}
+
+.helper-text {
+    font-size: 0.8rem;
+    color: #6b7280;
+    max-width: 420px;
+}
+
+/* Contenedor del mapa */
+.map-container {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(55, 65, 81, 0.9);
+    background: radial-gradient(circle at top, #020617 0, #020617 55%, #020617 100%);
+}
+
+#map {
+    width: 100%;
+    min-height: 420px;
+}
+
+/* Leyenda */
+.legend {
+    margin-top: 20px;
+    border-top: 1px solid rgba(31, 41, 55, 0.9);
+    padding-top: 14px;
+}
+
+.legend h2 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #9ca3af;
+    margin-bottom: 8px;
+}
+
+.legend ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+.legend li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+}
+
+.dot-high {
+    background: #f97373; /* rojo suave */
+}
+
+.dot-medium {
+    background: #facc15; /* amarillo suave */
+}
+
+.dot-low {
+    background: #4ade80; /* verde suave */
+}
+
+/* Sección de seguridad */
+.security-section {
+    margin-top: 8px;
+}
+
+.tips-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.92rem;
+    color: #d1d5db;
+}
+
+.tips-list li {
+    position: relative;
+    padding-left: 16px;
+}
+
+.tips-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: #22c55e;
+}
+
+/* Footer */
+.site-footer {
+    border-top: 1px solid rgba(31, 41, 55, 0.95);
+    background: radial-gradient(circle at top, #020617 0, #020617 50%, #020617 100%);
+    padding: 16px 24px 20px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .card {
+        padding: 20px 18px 22px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-wrapper {
+        margin-top: 24px;
+    }
+}
+/* FAQ - estilo acordeón elegante */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* Tarjeta básica del item */
+.faq-item {
+    border-radius: 18px;
+    border: 1px solid rgba(55, 65, 81, 0.9);
+    background: rgba(15, 23, 42, 0.96);
+    padding: 10px 14px;
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background-color 0.18s ease,
+        transform 0.12s ease;
+}
+
+/* Estado abierto: ligeramente más marcado */
+.faq-item[open] {
+    border-color: rgba(34, 197, 94, 0.75);
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.85);
+    background: rgba(15, 23, 42, 0.98);
+    transform: translateY(-1px);
+}
+
+/* Quitamos el marker feo por default */
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Cabecera de la pregunta */
+.faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 2px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #e5e7eb;
+}
+
+/* Texto de la pregunta */
+.faq-item summary span {
+    flex: 1;
+}
+
+/* Flecha */
+.faq-item summary::after {
+    content: "⌄";
+    font-size: 0.85rem;
+    color: #9ca3af;
+    transition: transform 0.18s ease, color 0.18s ease;
+}
+
+/* Flecha rota cuando está abierto */
+.faq-item[open] summary::after {
+    transform: rotate(-180deg);
+    color: #22c55e;
+}
+
+/* Hover en la cabecera */
+.faq-item summary:hover {
+    color: #f9fafb;
+}
+
+/* Respuesta */
+.faq-item p {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(31, 41, 55, 0.9);
+    font-size: 0.9rem;
+    color: #9ca3af;
+    line-height: 1.45;
+}
+
+/* Un poco más de aire en móvil */
+@media (max-width: 768px) {
+    .faq-item {
+        padding: 10px 12px;
+    }
+
+    .faq-item p {
+        font-size: 0.88rem;
+    }
+}
+
+
